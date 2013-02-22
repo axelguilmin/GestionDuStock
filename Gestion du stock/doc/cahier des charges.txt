@@ -1,0 +1,37 @@
+Rendu mi-avril
+-> pas de présentation
+-> Manuel utilisateur si besoin
+-> Notice d'installation
+-> Tourne sur Seven x64
+-> Atention doit tourner sur toute résolutions
+-> Avec la source
+
+Pompier au SDID 44 (professionel)
+Commandant de la BICE (Brigade Intervention en Conditions Extremes)
+-> Plongée, Escalade, Aérien etc ...
+
+Beaucoup de matériel (mousqueton, bouteilles plongé etc ...)
+-> Date d'achat
+-> Numero de série (tracabilité)
+-> Date de peremption (facultatif)
+-> Nombre max d'interventions (facultatif) / d'utilisation != intervention
+-> Etat (acheté, plus utilisable,perdu ..)
+Ne pas emener un matériel peremption/trop d'intervention
+
+Problématique de suivi (faite par papier actuellement)
+-> Informatiser le stock (recherche,inventaire vérif,nb total de matériel?,remonter le materiel périmé)
+
+Douchette a code barres a disposition / picking
+-> Lister sur chaque intervention le materiel emené (préparation en avance et/ou juste avant)
+-> Dire le matériel qui a servi au retour intervention -> Annoncer si on doit jetter l'objet périmé
+-> Materiel perdu
+
+Acces au logiciel ?
+Commandant -> Gestion des comptes
+Commandant + "équipe stock" -> Tout
+Tout les pompier -> Juste retour d'intervention (sans login)
+
+-> Voir la liste des intervention avec le matos utilisé
+
+15/20 sur le fonctionnel
+05/20 sur le code

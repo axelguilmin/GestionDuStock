@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07260DF5-434C-4A65-911F-05FEBBEA9232}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gestion_du_stock</RootNamespace>
+    <AssemblyName>Gestion du stock</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>data\camion.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExtendedControls, Version=1.0.3052.21480, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ExtendedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite, Version=1.0.79.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.79.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="class\DataBase.cs" />
+    <Compile Include="class\DataException.cs" />
+    <Compile Include="class\Message.cs" />
+    <Compile Include="class\User.cs" />
+    <Compile Include="entity\Account.cs" />
+    <Compile Include="entity\Equipment.cs" />
+    <Compile Include="entity\Intervention.cs" />
+    <Compile Include="entity\Item.cs" />
+    <Compile Include="entity\ItemIntervention.cs" />
+    <Compile Include="form\F_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\F_Users.Designer.cs">
+      <DependentUpon>F_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\F_About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\F_About.Designer.cs">
+      <DependentUpon>F_About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\F_Accueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\F_Accueil.Designer.cs">
+      <DependentUpon>F_Accueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="class\Forms.cs" />
+    <Compile Include="class\Program.cs" />
+    <Compile Include="form\F_ConnectUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\F_ConnectUser.Designer.cs">
+      <DependentUpon>F_ConnectUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\F_NewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\F_NewItem.Designer.cs">
+      <DependentUpon>F_NewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lib\DataGridViewMaskedTextCell.cs" />
+    <Compile Include="lib\DataGridViewMaskedTextColumn.cs" />
+    <Compile Include="lib\DataGridViewMaskedTextControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="lib\ReferencedDescriptionAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="stock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stock.edmx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="form\F_Users.resx">
+      <DependentUpon>F_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\F_About.resx">
+      <DependentUpon>F_About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\F_Accueil.resx">
+      <DependentUpon>F_Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\F_ConnectUser.resx">
+      <DependentUpon>F_ConnectUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\F_NewItem.resx">
+      <DependentUpon>F_NewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="doc\uml.vpp" />
+    <None Include="Properties\DataSources\Gestion_du_stock.data.stockEntities.datasource" />
+    <None Include="Properties\DataSources\Gestion_du_stock.form.stockEntities.datasource" />
+    <None Include="Properties\DataSources\stockEntities.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="data\stock.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EntityDeploy Include="stock.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>stock.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\camion.ico" />
+    <Content Include="doc\cahier des charges.txt" />
+    <Content Include="doc\mpd.sql" />
+    <None Include="data\camion.png" />
+    <Content Include="lib\ExtendedControls.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLite.Designer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="doc\sqlite3\sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe" />
+    <Content Include="doc\sqlite3\sqlite3.exe" />
+    <Content Include="System.Data.SQLite.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="System.Data.SQLite.Linq.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,134 @@
+---- Brouillon ----
+
+Use Linq to Entities (aka ADO.NET Entity Framework) with SQLite
+On Windows Seven x86, development vith VS2010
+
+-----
+1- Download SQLite setup (integration with VS2010) and install it in your development computer
+
+    http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki
+    Download and install "Setups for 32-bit Windows (.NET Framework 4.0)" -> "sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe"
+    [screen 0.png]
+
+	Reboot VS2010
+
+-----
+2- Create your SQLite database with sqlite3.exe 
+
+    sqlite-shell-win32-x86-3071000.zip here : http://sqlite.org/download.html
+    It's an sqlite3 tool to administrates databases with shell commands
+    
+    Create a file "schema.sql" with your database schema and some test data(CREATE TABLE etc...)
+    Then run in a command (cmd) : "sqlite3.exe data.db"
+    and ".read schema.sql"
+    [screen 1.png]
+
+    Note : You can also use SQLite Administrator tool to do the same thing in a GUI (standalone tool here : http://sqliteadmin.orbmu2k.de/)
+
+-----
+3- Add files needed in your VS2010 Project
+    
+    http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki
+    Download "Precompiled Statically-Linked Binaries for 32-bit Windows (.NET Framework 4.0)" -> "sqlite-netFx40-static-binary-Win32-2010-1.0.79.0.zip" --> FAUX
+    
+    Extract theses files :
+SQLite.Designer.dll
+SQLite.Designer.xml
+System.Data.SQLite.dll
+System.Data.SQLite.Linq.dll
+System.Data.SQLite.Linq.xml
+System.Data.SQLite.xml
+
+    Add to your projet : [screen 2.png] (right clic on your projet -> Add -> Element existant)
+data.db
+SQLite.Designer.dll
+System.Data.SQLite.dll
+System.Data.SQLite.Linq.dll
+
+    Add a reference to : [screen 3.png] (with the file in your project)
+System.Data.SQLite.dll
+System.Data.SQLite.Linq.dll
+
+    Change option "Copy" to "Every time" for : [screen 4.png]
+System.Data.SQLite.dll
+System.Data.SQLite.Linq.dll
+SQLite.Designer.dll
+data.db
+    
+    Note : XML files seems to be used for auto-completion
+
+-----
+3- V2
+
+
+
+    Add to your projet : [screen 2.png] (right clic on your projet -> Add -> Element existant)
+your data.db
+C:\Program Files\System.Data.SQLite\2010\bin\SQLite.Designer.dll
+C:\Program Files\System.Data.SQLite\2010\bin\System.Data.SQLite.dll
+C:\Program Files\System.Data.SQLite\2010\bin\System.Data.SQLite.Linq.dll
+    Change option "Copy" to "Every time" for : [screen 4-2.png]
+
+    Add a reference to : [screen 3.png] (with the file in your project)
+\Chemin\Vers\Votre\Projet\System.Data.SQLite.dll
+\Chemin\Vers\Votre\Projet\System.Data.SQLite.Linq.dll
+
+-----
+4- Create Entites
+Type [Ctrl] + [Maj] + [A] Or right clic on your projet -> Add -> New element
+Select ADO.Net Entity Data Model (Name as you want in the bottom of the windows) and clic "Add" [Screen 5.png]
+Select "Generer a partir de la base de données" [Screen 6.png]
+"Creer une nouvelle connexion"
+Source de donnée = "System.Data.SQLite Database File" Database = "data.db" imported previously in your project, connexion test should work fine. [screen 7.png]
+Select the bases to import.
+If it's ok, you'll see your tables before the end of this assistant [Screen 8.png]
+
+----
+5- Fix the app.config
+Edit the file app.config :
+5.1 - Connexion string
+Look for "data source" in <connectionStrings>, there is an absolute path to your Database, replace it by a relative path [Screen 9.png]
+5.2 - ADO.Net Provider
+Add"
+ <system.data>
+    <DbProviderFactories>
+      <remove invariant="System.Data.SQLite"/>
+      <add name="SQLite Data Provider" invariant="System.Data.SQLite" description=".Net Framework Data Provider for SQLite" type="System.Data.SQLite.SQLiteFactory, System.Data.SQLite, Version=X.X.X.X, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
+    </DbProviderFactories>
+  </system.data>
+" in the file, where, X.X.X.X is the version of SQLite3 you use(actually last is 1.0.79.0) [Screen 10.png]
+
+-----
+6- Test it
+Insert a code that use Linq with your database in the program like : [Screen 11.png]
+    System.Console.WriteLine("Test de SQLITE");
+    using(var db = new dataEntities())
+    {
+        System.Console.WriteLine("Connexion réussie, nombre d'enregistrements : " + db.users.Count());
+        foreach (var item in db.users)
+            Console.WriteLine(item.nom);
+        System.Console.ReadKey();
+    }
+Copy the folder "Debug" Or "Release" in another computer, it should work as the same !
+
+-----
+7- Sources
+http://stevenhollidge.blogspot.com/2011/03/c-and-sqlite.html
+http://www.sqlite.org/sqlite.html
+http://sqlite.org/download.html
+http://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki
+http://kubasik.net/blog/2009/02/09/using-linq-to-sqlite-providers-updated/
+
+-----
+8- Heritage
+Voir : http://pmusso.developpez.com/tutoriels/dotnet/entity-framework/introduction/#L2.1
+
+-----
+9- How to update database schema
+
+-> Supprimer edmx
+-> Supprimer connexion string dans App.Config
+-> Supprimer dans l'explorateur de serveurs
+-> Refaire fichier db
+-> Step 4, 5
+
